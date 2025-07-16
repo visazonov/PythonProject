@@ -26,7 +26,7 @@ def home_view(request):
 
 
 def create_user(request):
-    
+
     msg = f'Пользователь login успешно создан'
     return HttpResponse(msg)
 
