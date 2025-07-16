@@ -7,31 +7,34 @@ import os
 # load_dotenv()
 from netmiko import ConnectHandler
 
-from django.http import HttpResponse
+# from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, reverse
+from django.urls import reverse
 
-from django.http import HttpResponse
-from django.shortcuts import render, reverse
-
-user_vpn = 'Testov53'
-password_vpn = 'Test53'
 
 def home_view(request):
     template_name = 'app/home.html'
 
     pages = {
-        # 'Главная страница': reverse('home'),
-        'Создать пользователя': reverse('time'),
+        'Главная страница': reverse('home'),
+        'Создать пользователя': reverse('create_user'),
         # 'Удалить пользователя': reverse('delete'),
     }
 
     context = {
-        'pages': pages
+        'pages': pages,
+        'create_user_url': pages['Создать пользователя'],
     }
     return render(request, template_name, context)
 
 
 def create_user(request):
+
+    login = request.POST.get('login')
+    password = request.POST.get('password')
+
+
     mikrotik_router_021 = {
         'device_type': 'mikrotik_routeros',
         'host': '192.168.1.1',
@@ -44,23 +47,21 @@ def create_user(request):
     # print(sshCli.find_prompt())
     prompt = sshCli.find_prompt()
     print(f'Prompt: {prompt}')
-
+#
     commands = [
-        f':global Vuser {user_vpn}',
-        f':global password {password_vpn}',
-        '/system/script/run script1'
+        f':global Vuser {login}',
+        f':global password {password}',
+        # '/system/script/run script1'
     ]
     for cmd in commands:
         output = sshCli.send_command(cmd, expect_string=r'>', delay_factor=2, read_timeout=60)
 
     sshCli.disconnect()
 
-    msg = f'Пользователь login успешно создан'
-    return HttpResponse(msg)
+    return HttpResponse(f"Пользователь {login} успешно создан!")
+    # return HttpResponse("Метод не поддерживается", status=405)
+    # return HttpResponseRedirect(reverse('home'))
 
 
-# def time_view(request):
-#     current_time = datetime.datetime.now().time().strftime('%H:%M:%S')
-#     msg = f'Пользователь login успешно создан'
-#     return HttpResponse(msg)
+
 

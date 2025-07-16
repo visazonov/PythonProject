@@ -1,3 +1,22 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Домашняя страница</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Выберите раздел</h1>#}
+{#    {% for title, url in pages.items %}#}
+{#        <a href="{{ url }}">{{ title }}</a>#}
+{#        <a href="{{ url }}"><button>{{ title }}</button></a>#}
+{##}
+{##}
+{#        <br>#}
+{#    {% endfor %}#}
+{##}
+{#</body>#}
+{#</html>#}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +25,25 @@
 </head>
 <body>
     <h1>Выберите раздел</h1>
-    {% for title, url in pages.items %}
-        <a href="{{ url }}">{{ title }}</a>
-        <br>
-    {% endfor %}
 
+    <h2>Создать пользователя</h2>
+
+   <form method="post" action="{{create_user_url}}">
+        {% csrf_token %}
+        <label for="login">Логин:</label><br>
+        <input type="text" id="login" name="login"><br><br>
+
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <input type="submit" value="Создать">
+    </form>
+
+    <hr>
+
+{#    {% for title, page_url in pages.items %}#}
+{#        <a href="{{ page_url }}">{{ title }}</a><br>#}
+{#    {% endfor %}#}
 
 </body>
 </html>

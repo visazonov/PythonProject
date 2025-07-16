@@ -27,6 +27,6 @@ from app.views import create_user
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('create_user/', create_user, name='time'),
+    path('create_user/', create_user, name='create_user'),
     ]
 
