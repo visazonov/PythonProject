@@ -7,9 +7,7 @@
     <list default="true" id="a8cf33f0-d451-48ec-aa5c-24311390f6e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/app/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ovpn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ovpn/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,8 @@
       <option name="presentableId" value="Default" />
       <updated>1752576824286</updated>
       <workItem from="1752576825436" duration="4566000" />
-      <workItem from="1752638911814" duration="6507000" />
+      <workItem from="1752638911814" duration="7942000" />
+      <workItem from="1752659252574" duration="409000" />
     </task>
     <servers />
   </component>

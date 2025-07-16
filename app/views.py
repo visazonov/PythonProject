@@ -47,7 +47,7 @@ def create_user(request):
     # print(sshCli.find_prompt())
     prompt = sshCli.find_prompt()
     print(f'Prompt: {prompt}')
-#
+
     commands = [
         f':global Vuser {login}',
         f':global password {password}',
