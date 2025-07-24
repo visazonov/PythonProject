@@ -23,10 +23,11 @@ from django.urls import path
 
 from app.views import home_view
 from app.views import create_user
-
+from app.views import ovpn
 
 urlpatterns = [
     path('', home_view, name='home'),
+    path('ovpn', ovpn, name='ovpn'),
     path('create_user/', create_user, name='create_user'),
     ]
 

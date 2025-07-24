@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+    <h1>Ovpn</h1>
+
+    <h2>Создать пользователя</h2>
+
+   <form method="post" action="{{create_user_url}}">
+        {% csrf_token %}
+        <label for="login">Логин:</label><br>
+        <input type="text" id="login" name="login"><br><br>
+
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="mail">Mail:</label><br>
+        <input type="text" id="mail" name="mail"><br><br>
+
+        <input type="submit" value="Создать">
+    </form>
+
+    <hr>

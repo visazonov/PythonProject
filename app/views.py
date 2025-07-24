@@ -13,8 +13,23 @@ from django.shortcuts import render, reverse
 from django.urls import reverse
 
 
+
 def home_view(request):
     template_name = 'app/home.html'
+
+    pages = {
+        # 'Главная страница': reverse('home'),
+        'Ovpn': reverse('ovpn'),
+    }
+
+    context = {
+        'pages': pages,
+    }
+    return render(request, template_name, context)
+
+
+def ovpn(request):
+    template_name = 'app/ovpn.html'
 
     pages = {
         'Главная страница': reverse('home'),
@@ -33,6 +48,9 @@ def create_user(request):
 
     login = request.POST.get('login')
     password = request.POST.get('password')
+    mail = request.POST.get('mail')
+
+    # print('post', request.post)
 
 
     mikrotik_router_021 = {
@@ -51,14 +69,16 @@ def create_user(request):
     commands = [
         f':global Vuser {login}',
         f':global password {password}',
-        # '/system/script/run script1'
+        f':global mail {mail}',
+        '/system/script/run script1',
+        '/system/script/run script2',
     ]
     for cmd in commands:
         output = sshCli.send_command(cmd, expect_string=r'>', delay_factor=2, read_timeout=60)
 
     sshCli.disconnect()
 
-    return HttpResponse(f"Пользователь {login} успешно создан!")
+    return HttpResponse(f"Пользователь {login} успешно создан! {mail}")
     # return HttpResponse("Метод не поддерживается", status=405)
     # return HttpResponseRedirect(reverse('home'))
 
